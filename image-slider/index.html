@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="slider">
+        <div class="div1 img"></div>
+        <div class="div2 img"></div>
+        <div class="div3 img"></div>
+        <div class="div4 img"></div>
+    </div>
+    <script type="text/javascript">
+        const firstImage = document.querySelectorAll('.div1, .div2');
+        const secondImage = document.querySelectorAll('.div3, .div4');
+        let nextFirstImage;
+        let nextSecondImage;
+        firstImage.forEach((i) => {
+            i.addEventListener("animationiteration", (e) => {
+                nextFirstImage =  Number.parseInt(i.style.backgroundImage.slice(i.style.backgroundImage.indexOf('0'), i.style.backgroundImage.indexOf('0') + 2));
+                if(isNaN(nextFirstImage)) nextFirstImage = 1;
+                nextFirstImage == 4 ? nextFirstImage = 1 : nextFirstImage++;
+                i.style.backgroundImage = `url(./images/0${nextFirstImage}.jpeg)`
+            })
+        })
+
+        secondImage.forEach((i) => {
+            i.addEventListener("animationiteration", (e) => {
+                nextSecondImage =  Number.parseInt(i.style.backgroundImage.slice(i.style.backgroundImage.indexOf('0'), i.style.backgroundImage.indexOf('0') + 2));
+                if(isNaN(nextSecondImage)) nextSecondImage = 2;
+                nextSecondImage == 4 ? nextSecondImage = 1 : nextSecondImage++;
+                i.style.backgroundImage = `url(./images/0${nextSecondImage}.jpeg)`
+            })
+        })
+         
+    </script>
+</body>
+</html>
